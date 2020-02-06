@@ -1,3 +1,10 @@
 #!/bin/bash
 
 
+typeset -i toronto=6167863
+typeset -i ottawa=6094817
+
+curl -o JSON_data -X GET 'https://api.openweathermap.org/data/2.5/forecast?id=6167863&units=metric&APPID=6bfa2458671bc7e9c25c43b61b7d71b3'
+
+echo "it is `cat JSON_data | jq '.list[0].main.temp'` degrees in `cat JSON_data | jq '.city.name'` with `cat JSON_data | jq '.list[0].weather[0].description'` "
+
