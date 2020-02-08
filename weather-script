@@ -4,10 +4,24 @@
 typeset -i toronto=6167863
 typeset -i ottawa=6094817
 
-curl --silent -o JSON_data -X GET 'https://api.openweathermap.org/data/2.5/forecast?id=6167863&units=metric&APPID=6bfa2458671bc7e9c25c43b61b7d71b3'
-echo +------------+
-echo Your current weather forecast:
-echo "It is `cat JSON_data | jq '.list[0].main.temp'` degrees in `cat JSON_data | jq '.city.name'` with `cat JSON_data | jq '.list[0].weather[0].description'` "
+latitude=`whereami -r | sed 's/[^[:print:]]//g' | tail -14 | sed 's/\[1000D\[K\[1A\[1000D\[K//' | sed 's/\[?25h//' | jq '.latitude'` 
+longitude=`whereami -r | sed 's/[^[:print:]]//g' | tail -14 | sed 's/\[1000D\[K\[1A\[1000D\[K//' | sed 's/\[?25h//' | jq '.longitude'`
+city=`whereami -r | sed 's/[^[:print:]]//g' | tail -14 | sed 's/\[1000D\[K\[1A\[1000D\[K//' | sed 's/\[?25h//' | jq '.city'`
 
+
+echo your longitude: $longitude
+echo your latitude: $latitude
+url=("curl --silent -o JSON_data -X GET 'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&units=metric&APPID=6bfa2458671bc7e9c25c43b61b7d71b3'")
+eval $url
+
+echo +------------+
+echo Your current weather forecast in $city:
+echo "It is `cat JSON_data | jq '.main.temp'`C "
+echo "And it feels like `cat JSON_data | jq '.main.feels_like'`"
+echo "The weather is `cat JSON_data | jq '.weather[0].description'` "
+echo "+=-------=+"
+echo "Max today: `cat JSON_data | jq '.main.temp_max'`"
+echo "Min today: `cat JSON_data | jq '.main.temp_min'`"
+echo "Humidity: `cat JSON_data | jq '.main.humidity'` percent "
 
 echo +------------+
