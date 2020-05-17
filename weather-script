@@ -34,3 +34,6 @@ echo Sunset: `date -d@$Sunset | cut -c 17-`
 
 echo ================================================
 
+echo To see 5 day forecast press 5, otherwise press enter.
+
+
