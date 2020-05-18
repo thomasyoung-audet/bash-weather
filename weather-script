@@ -15,7 +15,7 @@ echo your longitude: $longitude
 echo your latitude: $latitude
 url=("curl --silent -o /home/$USER/Documents/git_repos/Weather/bash-weather/JSON_data -X GET 'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&units=metric&APPID=6bfa2458671bc7e9c25c43b61b7d71b3'")
 eval $url
-
+read_data=("cat /home/$USER/Documents/git_repos/Weather/bash-weather/JSON_data")
 echo +----------------------------------------------+
 echo Your current weather forecast in $city:
 echo "It is `cat /home/$USER/Documents/git_repos/Weather/bash-weather/JSON_data | jq '.main.temp'`C "
@@ -34,6 +34,19 @@ echo Sunset: `date -d@$Sunset | cut -c 17-`
 
 echo ================================================
 
-echo To see 5 day forecast press 5, otherwise press enter.
+read -n 1 -s -r -p "To quit, press enter. To see full 5 day forecast press any other key." input
+if [[ "$input" = "" ]]; then
+	echo ""
+	exit 1
+else
+	url=("curl --silent -o /home/$USER/Documents/git_repos/Weather/bash-weather/JSON_data -X GET 'https://api.openweathermap.org/data/2.5/forecast?lat=$latitude&lon=$longitude&units=metric&APPID=6bfa2458671bc7e9c25c43b61b7d71b3'")
+	eval $url
+	echo +----------------------------------------------+
+	echo "5 day forecast for $city"
+	echo "| `eval $read_data | jq '.list[0].dt_txt' | cut -c 2-11` | `eval $read_data | jq '.list[9].dt_txt' | cut -c 2-11` | `eval $read_data | jq '.list[18].dt_txt' | cut -c 2-11` | `eval $read_data | jq '.list[27].dt_txt' | cut -c 2-11` | `eval $read_data | jq '.list[36].dt_txt' | cut -c 2-11`"
+
+	echo "| `eval $read_data | jq '.list[0].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[0].dt_txt'` "
 
 
+
+fi
