@@ -3,7 +3,7 @@
 
 typeset -i toronto=6167863
 typeset -i ottawa=6094817
-
+api_key=`cat /home/$USER/Documents/git_repos/Weather/bash-weather/api_key`
 latitude=`whereami -r | sed 's/[^[:print:]]//g' | tail -14 | sed 's/\[1000D\[K\[1A\[1000D\[K//' | sed 's/\[?25h//' | jq '.latitude'` 
 longitude=`whereami -r | sed 's/[^[:print:]]//g' | tail -14 | sed 's/\[1000D\[K\[1A\[1000D\[K//' | sed 's/\[?25h//' | jq '.longitude'`
 city=`whereami -r | sed 's/[^[:print:]]//g' | tail -14 | sed 's/\[1000D\[K\[1A\[1000D\[K//' | sed 's/\[?25h//' | jq '.city'`
@@ -13,7 +13,7 @@ echo ++ `date | cut -c -15` ++
 
 echo your longitude: $longitude
 echo your latitude: $latitude
-url=("curl --silent -o /home/$USER/Documents/git_repos/Weather/bash-weather/JSON_data -X GET 'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&units=metric&APPID=6bfa2458671bc7e9c25c43b61b7d71b3'")
+url=("curl --silent -o /home/$USER/Documents/git_repos/Weather/bash-weather/JSON_data -X GET 'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&units=metric&APPID=$api_key'")
 eval $url
 read_data=("cat /home/$USER/Documents/git_repos/Weather/bash-weather/JSON_data")
 echo +----------------------------------------------+
@@ -39,7 +39,7 @@ if [[ "$input" = " " ]]; then
 	echo ""
 	exit 1
 else
-	url=("curl --silent -o /home/$USER/Documents/git_repos/Weather/bash-weather/JSON_data -X GET 'https://api.openweathermap.org/data/2.5/forecast?lat=$latitude&lon=$longitude&units=metric&APPID=6bfa2458671bc7e9c25c43b61b7d71b3'")
+	url=("curl --silent -o /home/$USER/Documents/git_repos/Weather/bash-weather/JSON_data -X GET 'https://api.openweathermap.org/data/2.5/forecast?lat=$latitude&lon=$longitude&units=metric&APPID=$api_key'")
 	echo ""
 	eval $url
 	echo +----------------------------------------------+
