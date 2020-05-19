@@ -34,8 +34,8 @@ echo Sunset: `date -d@$Sunset | cut -c 17-`
 
 echo ================================================
 
-read -n 1 -s -r -p "To quit, press enter. To see full 5 day forecast press any other key." input
-if [[ "$input" = "" ]]; then
+read -n 1 -s -r -p "To quit, press space. To see full 5 day forecast press any other key." input
+if [[ "$input" = " " ]]; then
 	echo ""
 	exit 1
 else
@@ -44,23 +44,24 @@ else
 	eval $url
 	echo +----------------------------------------------+
 	echo "5 day forecast for $city"
-	echo "        |  `eval $read_data | jq '.list[0].dt_txt' | cut -c 10-11`  |  `eval $read_data | jq '.list[9].dt_txt' | cut -c 10-11`  |  `eval $read_data | jq '.list[18].dt_txt' | cut -c 10-11`  |  `eval $read_data | jq '.list[27].dt_txt' | cut -c 10-11`  |  `eval $read_data | jq '.list[36].dt_txt' | cut -c 10-11`"
+	echo "        |  `eval $read_data | jq '.list[0].dt_txt' | cut -c 10-11`  |  `eval $read_data | jq '.list[8].dt_txt' | cut -c 10-11`  |  `eval $read_data | jq '.list[18].dt_txt' | cut -c 10-11`  |  `eval $read_data | jq '.list[27].dt_txt' | cut -c 10-11`  |  `eval $read_data | jq '.list[36].dt_txt' | cut -c 10-11`"
 
-	echo "| `eval $read_data | jq '.list[0].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[0].main.temp'` | `eval $read_data | jq '.list[9].main.temp'` | `eval $read_data | jq '.list[18].main.temp'` | `eval $read_data | jq '.list[27].main.temp'` | `eval $read_data | jq '.list[36].main.temp'`"
+	echo "| `eval $read_data | jq '.list[0].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[0].main.temp'` | `eval $read_data | jq '.list[8].main.temp'` | `eval $read_data | jq '.list[16].main.temp'` | `eval $read_data | jq '.list[24].main.temp'` | `eval $read_data | jq '.list[32].main.temp'`"
 
-	echo "| `eval $read_data | jq '.list[1].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[1].main.temp'` | `eval $read_data | jq '.list[10].main.temp'` | `eval $read_data | jq '.list[19].main.temp'` | `eval $read_data | jq '.list[28].main.temp'` | `eval $read_data | jq '.list[37].main.temp'`"
+	echo "| `eval $read_data | jq '.list[1].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[1].main.temp'` | `eval $read_data | jq '.list[9].main.temp'` | `eval $read_data | jq '.list[17].main.temp'` | `eval $read_data | jq '.list[25].main.temp'` | `eval $read_data | jq '.list[33].main.temp'`"
 
-	echo "| `eval $read_data | jq '.list[2].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[2].main.temp'` | `eval $read_data | jq '.list[11].main.temp'` | `eval $read_data | jq '.list[20].main.temp'` | `eval $read_data | jq '.list[29].main.temp'` | `eval $read_data | jq '.list[38].main.temp'`"
+	echo "| `eval $read_data | jq '.list[2].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[2].main.temp'` | `eval $read_data | jq '.list[10].main.temp'` | `eval $read_data | jq '.list[18].main.temp'` | `eval $read_data | jq '.list[26].main.temp'` | `eval $read_data | jq '.list[34].main.temp'`"
 
-	echo "| `eval $read_data | jq '.list[3].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[3].main.temp'` | `eval $read_data | jq '.list[12].main.temp'` | `eval $read_data | jq '.list[21].main.temp'` | `eval $read_data | jq '.list[30].main.temp'` | `eval $read_data | jq '.list[39].main.temp'`"
+	echo "| `eval $read_data | jq '.list[3].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[3].main.temp'` | `eval $read_data | jq '.list[11].main.temp'` | `eval $read_data | jq '.list[19].main.temp'` | `eval $read_data | jq '.list[27].main.temp'` | `eval $read_data | jq '.list[35].main.temp'`"
 
-	echo "| `eval $read_data | jq '.list[4].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[4].main.temp'` | `eval $read_data | jq '.list[13].main.temp'` | `eval $read_data | jq '.list[22].main.temp'` | `eval $read_data | jq '.list[31].main.temp'` | `eval $read_data | jq '.list[40].main.temp'`"
+	echo "| `eval $read_data | jq '.list[4].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[4].main.temp'` | `eval $read_data | jq '.list[12].main.temp'` | `eval $read_data | jq '.list[20].main.temp'` | `eval $read_data | jq '.list[28].main.temp'` | `eval $read_data | jq '.list[36].main.temp'`"
 
-	echo "| `eval $read_data | jq '.list[5].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[5].main.temp'` | `eval $read_data | jq '.list[14].main.temp'` | `eval $read_data | jq '.list[23].main.temp'` | `eval $read_data | jq '.list[32].main.temp'` | `eval $read_data | jq '.list[41].main.temp'`"
+	echo "| `eval $read_data | jq '.list[5].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[5].main.temp'` | `eval $read_data | jq '.list[13].main.temp'` | `eval $read_data | jq '.list[21].main.temp'` | `eval $read_data | jq '.list[29].main.temp'` | `eval $read_data | jq '.list[37].main.temp'`"
 
-	echo "| `eval $read_data | jq '.list[6].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[6].main.temp'` | `eval $read_data | jq '.list[15].main.temp'` | `eval $read_data | jq '.list[24].main.temp'` | `eval $read_data | jq '.list[33].main.temp'` | `eval $read_data | jq '.list[42].main.temp'`"
+	echo "| `eval $read_data | jq '.list[6].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[6].main.temp'` | `eval $read_data | jq '.list[14].main.temp'` | `eval $read_data | jq '.list[22].main.temp'` | `eval $read_data | jq '.list[30].main.temp'` | `eval $read_data | jq '.list[38].main.temp'`"
 
-	echo "| `eval $read_data | jq '.list[7].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[7].main.temp'` | `eval $read_data | jq '.list[16].main.temp'` | `eval $read_data | jq '.list[25].main.temp'` | `eval $read_data | jq '.list[34].main.temp'` | `eval $read_data | jq '.list[43].main.temp'`"
+	echo "| `eval $read_data | jq '.list[7].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[7].main.temp'` | `eval $read_data | jq '.list[15].main.temp'` | `eval $read_data | jq '.list[23].main.temp'` | `eval $read_data | jq '.list[33].main.temp'` | `eval $read_data | jq '.list[39].main.temp'`"
+
 
 
 fi
