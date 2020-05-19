@@ -62,6 +62,31 @@ else
 
 	echo "| `eval $read_data | jq '.list[7].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[7].main.temp'` | `eval $read_data | jq '.list[15].main.temp'` | `eval $read_data | jq '.list[23].main.temp'` | `eval $read_data | jq '.list[33].main.temp'` | `eval $read_data | jq '.list[39].main.temp'`"
 
+	echo `date --date='1 day' | cut -c -10`
+	echo "                  |    03:00   |   06:00   |   09:00   |   12:00   |   15:00   |   18:00   |   21:00   |   00:00"	
+	echo  "Temperature in C :|   `eval $read_data | jq '.list[0].main.temp'`   |   `eval $read_data | jq '.list[1].main.temp'`   |   `eval $read_data | jq '.list[2].main.temp'`   |   `eval $read_data | jq '.list[3].main.temp'`   |   `eval $read_data | jq '.list[4].main.temp'`   |   `eval $read_data | jq '.list[4].main.temp'`   |   `eval $read_data | jq '.list[5].main.temp'`   |   `eval $read_data | jq '.list[6].main.temp'`   |   `eval $read_data | jq '.list[7].main.temp'`"
+	echo  "Feels like:       | `eval $read_data | jq '.list[0].main.feels_like'` | `eval $read_data | jq '.list[1].main.feels_like'` | `eval $read_data | jq '.list[2].main.feels_like'` | `eval $read_data | jq '.list[3].main.feels_like'` | `eval $read_data | jq '.list[4].main.feels_like'` | `eval $read_data | jq '.list[4].main.feels_like'` | `eval $read_data | jq '.list[5].main.feels_like'` | `eval $read_data | jq '.list[6].main.feels_like'` | `eval $read_data | jq '.list[7].main.feels_like'`"
+	echo "Forecast is:      | `eval $read_data | jq '.list[0].weather[0].main'` | `eval $read_data | jq '.list[1].weather[0].main'` | `eval $read_data | jq '.list[2].weather[0].main'` | `eval $read_data | jq '.list[3].weather[0].main'` | `eval $read_data | jq '.list[4].weather[0].main'` | `eval $read_data | jq '.list[4].weather[0].main'` | `eval $read_data | jq '.list[5].weather[0].main'` | `eval $read_data | jq '.list[6].weather[0].main'` | `eval $read_data | jq '.list[7].weather[0].main'`"
+ 
 
+
+
+
+
+
+	echo `date --date='2 day' | cut -c -10`
+	echo "| `eval $read_data | jq '.list[0].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[1].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[2].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[3].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[4].dt_txt' | cut -c 13-17`"
+
+
+	echo `date --date='3 day' | cut -c -10`
+	echo "| `eval $read_data | jq '.list[0].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[1].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[2].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[3].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[4].dt_txt' | cut -c 13-17`"
+
+
+	echo `date --date='4 day' | cut -c -10`
+	echo "| `eval $read_data | jq '.list[0].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[1].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[2].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[3].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[4].dt_txt' | cut -c 13-17`"
+
+
+	echo `date --date='5 day' | cut -c -10`
+	echo "| `eval $read_data | jq '.list[0].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[1].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[2].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[3].dt_txt' | cut -c 13-17` | `eval $read_data | jq '.list[4].dt_txt' | cut -c 13-17`"
 
 fi
